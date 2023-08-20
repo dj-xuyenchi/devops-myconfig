@@ -7,22 +7,27 @@ pipeline{
                 git branch: 'dev', url: 'https://github.com/dj-xuyenchi/democicd.git'
             }
         }
-         stage("clean"){
+        stage("restore"){
             steps{
-               bat "dotnet clean "
+                bat "dotnet restore"
+            }
+        }
+        stage("clean"){
+            steps{
+               bat "dotnet clean"
             }
         }
         stage("build"){
             steps{
-               bat "dotnet build "
+               bat "dotnet build"
             }
         }
         stage("public"){
             steps{
-               bat "dotnet publish "
+               bat "dotnet publish"
             }
         }
-          stage("copy"){
+        stage("copy"){
             steps{
                bat "xcopy .\\WebApplication1\\bin\\Debug\\net6.0\\publish C:\\www\\cicd /e /i /y /r"
             }
