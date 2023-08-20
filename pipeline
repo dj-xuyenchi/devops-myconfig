@@ -1,0 +1,31 @@
+pipeline{
+    agent any
+    
+    stages{
+        stage("clone"){
+            steps{
+                git branch: 'dev', url: 'https://github.com/dj-xuyenchi/democicd.git'
+            }
+        }
+         stage("clean"){
+            steps{
+               bat "dotnet clean "
+            }
+        }
+        stage("build"){
+            steps{
+               bat "dotnet build "
+            }
+        }
+        stage("public"){
+            steps{
+               bat "dotnet publish "
+            }
+        }
+          stage("copy"){
+            steps{
+               bat "xcopy .\\WebApplication1\\bin\\Debug\\net6.0\\publish C:\\www\\cicd /e /i /y /r"
+            }
+        }
+    }
+}
