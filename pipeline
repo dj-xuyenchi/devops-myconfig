@@ -27,10 +27,20 @@ pipeline{
                bat "dotnet publish"
             }
         }
-        stage("copy"){
+        stage("stop site"){
+            steps{
+               bat "%systemroot%\\system32\\inetsrv\\APPCMD stop site tên site"
+            }
+         }
+        stage("copy file publish"){
             steps{
                bat "xcopy .\\WebApplication1\\bin\\Debug\\net6.0\\publish C:\\www\\cicd /e /i /y /r"
             }
-        }
+          }
+        stage("start site"){
+            steps{
+               bat "%systemroot%\\system32\\inetsrv\\APPCMD start site tên site"
+            }
+         }
     }
 }
