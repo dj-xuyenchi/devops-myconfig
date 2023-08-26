@@ -1,0 +1,24 @@
+docker command
+
+docker ps 
+/// hiện hết container đang chạy
+docker ps -a
+/// hiện hết container đang chạy và đã dừng
+docker run id
+// chạy container
+// -it để tương tác với container
+// -d để container chạy ngầm không bị nhảy vào container
+docker exec id
+// chạy thực thi lệnh trong container
+docker run -p port:port containerId
+// kết nối port giữa container và máy chạy
+
+
+
+
+/// Với hệ điều hành ảo alpine (Linux tối giản)
+khi chạy thoát ra sử dụng tổ hợp Ctrl + D sẽ kết thúc luôn container 
+nhưng sử dụng Ctrl P + Q thì sẽ ko kết thúc mà nhảy ra ngoài cmd máy chính
+docker attach id
+// trở lại container 
+docker detach id chạy ngầm container
