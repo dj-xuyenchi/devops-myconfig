@@ -10,6 +10,28 @@ docker run id
 // -d để container chạy ngầm không bị nhảy vào container
 docker exec id
 // chạy thực thi lệnh trong container
+
+
+
+
+
+// triển khải .NET lên docker sau khi build file
+# Sử dụng hình ảnh aspnet6 làm cơ sở
+FROM mcr.microsoft.com/dotnet/aspnet:6.0
+
+# Đặt thư mục làm việc mặc định
+WORKDIR /app
+
+# Sao chép tệp tin đã xây dựng từ máy tính của bạn vào thư mục làm việc trong container
+COPY ./* /app/
+COPY ./wwwroot /app/wwwroot
+# Expose cổng nếu cần
+EXPOSE 85
+
+# Lệnh mặc định khi container được khởi động
+
+ENTRYPOINT ["dotnet", "WebApplication1.dll"]
+
 docker run -p port:port containerId
 // kết nối port giữa container và máy chạy
 
@@ -25,21 +47,5 @@ docker detach id chạy ngầm container
 
 
 
-docker build -t tenImage -f tên docker file(txt cũng dc có -f là ok) .
+docker build -t tenImage -f tên docker file(txt cũng dc có -f là ok) . (nhớ dấu . ở cuối)
 
-
-// triển khải .NET lên docker sau khi build file
-# Sử dụng hình ảnh .NET Runtime làm cơ sở
-FROM mcr.microsoft.com/dotnet/aspnet:6.0
-
-# Đặt thư mục làm việc mặc định
-WORKDIR /app
-
-# Sao chép tệp tin đã xây dựng của ứng dụng vào thư mục làm việc trong container
-COPY . .
-
-# Expose cổng nếu cần
-EXPOSE 80
-
-# Lệnh mặc định khi container được khởi động
-ENTRYPOINT ["dotnet", "YourApp.dll"]
