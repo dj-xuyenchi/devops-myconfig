@@ -47,5 +47,5 @@ docker detach id chạy ngầm container
 
 
 
-docker build -t tenImage -f tên docker file(txt cũng dc có -f là ok) . (nhớ dấu . ở cuối)
+docker build -t tenImage -f tên docker file(txt cũng dc có -f là ok) . (nhớ dấu . ở cuối thể hiện sẽ đứng ở vị trí hiện tại của dockerfile để làm đường dẫn chính khi copy file)
 
