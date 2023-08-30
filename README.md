@@ -6,3 +6,10 @@ Lỗi mvn is not recognized as an internal or external command.
 Fix bằng cách thêm biến môi trường trong System variables
 MAVEN_HOME value trỏ đến thư mục maven Ví dụ: C:\Program Files\apache-maven-3.9.4
 
+ stage("copy file to tomcat"){
+            steps{
+               bat 'copy "C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\doan\\lab\\target\\lab-0.0.1-SNAPSHOT.war" "C:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps\\lab-0.0.1-SNAPSHOT.war"'
+            }
+        }
+        copy file
+
